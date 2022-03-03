@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_title_task">Today Task</string>
+    <string name="app_name">To Do List</string>
+    <string name="fab_add_task_description">Button Add New Task</string>
+    <string name="title_task">Tasks</string>
+    <string name="btn_change_mode_description">Change Theme Mode</string>
+    <string name="title_hint">Title</string>
+    <string name="description_hint">Description</string>
+    <string name="date_hint">Date</string>
+    <string name="hour_hint">Hour</string>
+    <string name="cancel_task_button_text">Cancel</string>
+    <string name="create_task_text">Create Task</string>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="main_title_task">Tarefas de Hoje</string>
+    <string name="fab_add_task_description">Botão Adicionar nova Tarefa</string>
+    <string name="title_task">Tarefas</string>
+    <string name="btn_change_mode_description">Botão responsável por mudar o tema da aplicação</string>
+    <string name="title_hint">Título</string>
+    <string name="description_hint">Descrição</string>
+    <string name="date_hint">Data</string>
+    <string name="hour_hint">Horário</string>
+    <string name="cancel_task_button_text">Cancelar</string>
+    <string name="create_task_text">Criar Tarefa</string>
+    <string name="task_menu_popup_edit_label">Editar</string>
+    <string name="task_menu_popup_delete_label">Deletar</string>
+    <string name="task_empty_text_label">Ops! Você não possui\n nenhum tarefa pra hoje</string>
+</resources>
