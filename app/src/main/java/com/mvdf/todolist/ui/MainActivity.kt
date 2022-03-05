@@ -6,19 +6,19 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import com.mvdf.todolist.R
 import com.mvdf.todolist.databinding.ActivityMainBinding
-import com.mvdf.todolist.datasource.TaskDataSource
+import com.mvdf.todolist.viewmodel.TaskViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     companion object{
         private const val CREATE_NEW_TASK = 1000
     }
+
+    private lateinit var taskViewModel: TaskViewModel
 
     private lateinit var binding : ActivityMainBinding
     private val taskAdapter by lazy { TaskListAdapter() }
@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
         binding.rvMainTask.adapter = taskAdapter
         updateList()
@@ -75,9 +77,8 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, CREATE_NEW_TASK)
         }
 
-        taskAdapter.listenerDelete = {
-            TaskDataSource.deleteTask(it)
-            updateList()
+        taskAdapter.listenerDelete = { task ->
+            taskViewModel.delete(task)
         }
     }
 
@@ -89,13 +90,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateList(){
-        val list = TaskDataSource.getList()
-
-        binding.includeEmptyTaskState.emptyTaskState.visibility =
-            if (list.isEmpty()) View.VISIBLE else View.GONE
-
-        taskAdapter.submitList(list)
+        taskViewModel.allTasks.observe(this) { data ->
+            binding.includeEmptyTaskState.emptyTaskState.visibility =
+                if (data.isEmpty()) View.VISIBLE else View.GONE
+            taskAdapter.submitList(data)
+        }
     }
-
-
 }

@@ -1,6 +1,6 @@
 package com.mvdf.todolist.datasource
 
-import com.mvdf.todolist.model.Task
+import com.mvdf.todolist.entity.Task
 
 object TaskDataSource {
     private val list = arrayListOf<Task>()

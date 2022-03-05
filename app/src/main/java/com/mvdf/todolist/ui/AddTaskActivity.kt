@@ -3,7 +3,9 @@ package com.mvdf.todolist.ui
 import android.app.Activity
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -11,7 +13,8 @@ import com.mvdf.todolist.databinding.ActivityAddTaskBinding
 import com.mvdf.todolist.datasource.TaskDataSource
 import com.mvdf.todolist.extensions.format
 import com.mvdf.todolist.extensions.text
-import com.mvdf.todolist.model.Task
+import com.mvdf.todolist.entity.Task
+import com.mvdf.todolist.viewmodel.TaskViewModel
 import java.util.*
 
 class AddTaskActivity: AppCompatActivity() {
@@ -19,13 +22,15 @@ class AddTaskActivity: AppCompatActivity() {
     companion object{
         const val TASK_ID = "task_id"
     }
-
+    private lateinit var taskViewModel: TaskViewModel
     private lateinit var binding: ActivityAddTaskBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
         if(intent.hasExtra(TASK_ID)){
             val taskId = intent.getIntExtra(TASK_ID, 0)
@@ -78,6 +83,8 @@ class AddTaskActivity: AppCompatActivity() {
                 hour = binding.tilHour.text,
                 id = intent.getIntExtra(TASK_ID,0)
             )
+            taskViewModel.insert(task)
+
             TaskDataSource.insertTask(task)
             setResult(Activity.RESULT_OK)
             finish()

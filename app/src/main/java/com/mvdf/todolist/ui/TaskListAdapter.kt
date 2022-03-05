@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mvdf.todolist.R
 import com.mvdf.todolist.databinding.ItemTaskBinding
-import com.mvdf.todolist.model.Task
+import com.mvdf.todolist.entity.Task
 
 class TaskListAdapter: ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallback()){
 
@@ -53,7 +53,7 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCal
 }
 
 class DiffCallback: DiffUtil.ItemCallback<Task>(){
-    override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
+    override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem === newItem
 
     override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
 
