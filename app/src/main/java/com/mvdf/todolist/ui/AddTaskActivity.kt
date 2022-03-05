@@ -1,16 +1,13 @@
 package com.mvdf.todolist.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.mvdf.todolist.databinding.ActivityAddTaskBinding
-import com.mvdf.todolist.datasource.TaskDataSource
 import com.mvdf.todolist.extensions.format
 import com.mvdf.todolist.extensions.text
 import com.mvdf.todolist.entity.Task
@@ -21,6 +18,10 @@ class AddTaskActivity: AppCompatActivity() {
 
     companion object{
         const val TASK_ID = "task_id"
+        const val TASK_TITLE = "task_title"
+        const val TASK_DESCRIPTION = "task_description"
+        const val TASK_DATE = "task_date"
+        const val TASK_HOUR = "task_hour"
     }
     private lateinit var taskViewModel: TaskViewModel
     private lateinit var binding: ActivityAddTaskBinding
@@ -33,13 +34,10 @@ class AddTaskActivity: AppCompatActivity() {
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
         if(intent.hasExtra(TASK_ID)){
-            val taskId = intent.getIntExtra(TASK_ID, 0)
-            TaskDataSource.findById(taskId)?.let {
-                binding.tilTitle.text = it.title
-                binding.tilDescription.text = it.description
-                binding.tilDate.text = it.date
-                binding.tilHour.text = it.hour
-            }
+            binding.tilTitle.text = intent.getStringExtra(TASK_TITLE).toString()
+            binding.tilDescription.text = intent.getStringExtra(TASK_DESCRIPTION).toString()
+            binding.tilDate.text = intent.getStringExtra(TASK_DATE).toString()
+            binding.tilHour.text = intent.getStringExtra(TASK_HOUR).toString()
         }
 
         insertListeners()
@@ -81,12 +79,11 @@ class AddTaskActivity: AppCompatActivity() {
                 description = binding.tilDescription.text,
                 date = binding.tilDate.text,
                 hour = binding.tilHour.text,
-                id = intent.getIntExtra(TASK_ID,0)
+                id = intent.getIntExtra(TASK_ID,-1)
             )
-            taskViewModel.insert(task)
+            if(task.id<0) taskViewModel.insert(task)
+            else taskViewModel.update(task)
 
-            TaskDataSource.insertTask(task)
-            setResult(Activity.RESULT_OK)
             finish()
         }
 

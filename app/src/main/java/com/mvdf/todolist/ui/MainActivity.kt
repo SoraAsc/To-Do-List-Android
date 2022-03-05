@@ -1,6 +1,5 @@
 package com.mvdf.todolist.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +12,6 @@ import com.mvdf.todolist.databinding.ActivityMainBinding
 import com.mvdf.todolist.viewmodel.TaskViewModel
 
 class MainActivity : AppCompatActivity(){
-
-    companion object{
-        private const val CREATE_NEW_TASK = 1000
-    }
 
     private lateinit var taskViewModel: TaskViewModel
 
@@ -68,24 +63,21 @@ class MainActivity : AppCompatActivity(){
     private fun insertListener() {
         binding.fabCreateTask.setOnClickListener{
             val intent = Intent(this, AddTaskActivity::class.java)
-            startActivityForResult(intent, CREATE_NEW_TASK)
+            startActivity(intent)
         }
 
         taskAdapter.listenerEdit = {
             val intent = Intent(this, AddTaskActivity::class.java)
             intent.putExtra(AddTaskActivity.TASK_ID, it.id)
-            startActivityForResult(intent, CREATE_NEW_TASK)
+            intent.putExtra(AddTaskActivity.TASK_TITLE, it.title)
+            intent.putExtra(AddTaskActivity.TASK_DESCRIPTION, it.description)
+            intent.putExtra(AddTaskActivity.TASK_DATE, it.date)
+            intent.putExtra(AddTaskActivity.TASK_HOUR, it.hour)
+            startActivity(intent)
         }
 
         taskAdapter.listenerDelete = { task ->
             taskViewModel.delete(task)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == CREATE_NEW_TASK && resultCode == Activity.RESULT_OK){
-            updateList()
         }
     }
 
