@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
 
-        android:textColor="@color/black"
+        android:textColor="@color/default_text_color"
         android:gravity="center"
         android:textSize="24sp"
         android:text="@string/task_empty_text_label"
@@ -28,9 +28,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
 
         app:srcCompat="@drawable/ic_empty_list"
-        android:layout_marginTop="16dp"
+        android:tint="@color/background_color_bottom_bar"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

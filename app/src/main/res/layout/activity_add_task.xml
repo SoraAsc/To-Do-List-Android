@@ -14,6 +14,8 @@
 
         app:title="@string/create_task_text"
         app:navigationIcon="@drawable/ic_navigate_before"
+        app:navigationIconTint="@color/default_text_color"
+        app:titleTextColor="@color/default_text_color"
     />
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="35dp"
+        app:layout_constraintGuide_begin="37dp"
     />
 
     <androidx.constraintlayout.widget.Guideline
@@ -41,7 +43,8 @@
         app:layout_constraintEnd_toStartOf="@id/guide_end"
         android:layout_marginTop="53dp"
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TextInput.Style"
+
         android:hint="@string/title_hint"
         android:textColorHint= "@color/default_text_color">
 
@@ -49,6 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/default_text_color"
+
         />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +68,7 @@
         app:layout_constraintEnd_toStartOf="@id/guide_end"
         android:layout_marginTop="53dp"
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TextInput.Style"
         android:hint="@string/description_hint"
         android:textColorHint="@color/default_text_color">
 
@@ -73,6 +79,7 @@
             android:minHeight="200dp"
             android:gravity="top"
             android:inputType="textMultiLine"
+            android:textColor="@color/default_text_color"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,10 +93,11 @@
         android:layout_marginTop="53dp"
         android:layout_marginEnd="16dp"
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TextInput.Style"
         android:hint="@string/date_hint"
         app:startIconDrawable="@drawable/ic_calendar"
-        android:textColorHint= "@color/default_text_color">
+        android:textColorHint= "@color/default_text_color"
+        app:startIconTint="@color/default_text_color">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -99,7 +107,9 @@
             android:focusable="false"
 
             android:textSize="15sp"
-            />
+            android:focusableInTouchMode="false"
+            android:textColor="@color/default_text_color"
+        />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,10 +121,11 @@
         app:layout_constraintStart_toEndOf="@id/til_date"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TextInput.Style"
         android:hint="@string/hour_hint"
         app:startIconDrawable="@drawable/ic_timer"
-        android:textColorHint= "@color/default_text_color">
+        android:textColorHint= "@color/default_text_color"
+        app:startIconTint="@color/default_text_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -123,6 +134,8 @@
             android:focusable="false"
 
             android:textSize="15sp"
+            android:focusableInTouchMode="false"
+            android:textColor="@color/default_text_color"
         />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -140,19 +153,22 @@
         android:text="@string/cancel_task_button_text"
         android:textAllCaps="false"
         android:textColor="@color/default_text_color"
+        app:strokeColor="@color/default_text_color"
     />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_create_new_task"
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/create_task_text"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintStart_toStartOf="@id/guide_start"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        android:layout_marginBottom="16dp"
+        tools:ignore="DuplicateSpeakableTextCheck"
+
+        android:text="@string/create_task_text"
+        android:textAllCaps="false"
+        android:theme="@style/AppTheme.Create.Task"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

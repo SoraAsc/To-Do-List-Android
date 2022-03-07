@@ -11,4 +11,8 @@
     <string name="hour_hint">Hour</string>
     <string name="cancel_task_button_text">Cancel</string>
     <string name="create_task_text">Create Task</string>
+    <string name="edit_label">Edit</string>
+    <string name="delete_label">Delete</string>
+    <string name="task_empty_text_label">You don\'t have any Tasks</string>
+    <string name="edit_task_text">Edit Task</string>
 </resources>

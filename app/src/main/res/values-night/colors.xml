@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="default_text_color">#FFFFFF</color>
+    <color name="inverse_text_color">#FF000000</color>
     <color name="background_color">#2E282A</color>
     <color name="background_color_bottom_bar">#17BEBB</color>
     <color name="background_color_create_floating_button">#0A2342</color>

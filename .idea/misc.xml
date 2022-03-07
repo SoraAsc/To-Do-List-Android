@@ -6,10 +6,10 @@
         <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/drawable/ic_add.xml" value="0.178" />
         <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/drawable/ic_moon.xml" value="0.1405" />
         <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/font/roboto.xml" value="0.19947916666666668" />
-        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/activity_add_task.xml" value="0.18" />
-        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/item_task.xml" value="0.18" />
-        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/task_empty_state.xml" value="0.12" />
+        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/activity_add_task.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/item_task.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/layout/task_empty_state.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/ToDoList/app/src/main/res/menu/task_menu_popup.xml" value="0.25" />
       </map>
     </option>

@@ -10,7 +10,8 @@
     <string name="hour_hint">Horário</string>
     <string name="cancel_task_button_text">Cancelar</string>
     <string name="create_task_text">Criar Tarefa</string>
-    <string name="task_menu_popup_edit_label">Editar</string>
-    <string name="task_menu_popup_delete_label">Deletar</string>
+    <string name="edit_task_text">Editar Tarefa</string>
+    <string name="edit_label">Editar</string>
+    <string name="delete_label">Deletar</string>
     <string name="task_empty_text_label">Ops! Você não possui\n nenhum tarefa pra hoje</string>
 </resources>

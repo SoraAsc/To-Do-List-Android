@@ -32,8 +32,19 @@ class MainActivity : AppCompatActivity(){
 
         val appSettingsPrefs: SharedPreferences = getSharedPreferences("AppSettingsPrefs",0)
         val sharedPrefsEdit: SharedPreferences.Editor = appSettingsPrefs.edit()
-        val isNightModeOn: Boolean = appSettingsPrefs.getBoolean("NightMode", false)
+        var isNightModeOn: Boolean = appSettingsPrefs.getBoolean("NightMode", false)
 
+        changeMode(isNightModeOn)
+
+        binding.imgBtnChangeMode.setOnClickListener {
+            isNightModeOn = !isNightModeOn
+            sharedPrefsEdit.putBoolean("NightMode", isNightModeOn)
+            sharedPrefsEdit.apply()
+            changeMode(isNightModeOn)
+        }
+    }
+
+    private fun changeMode(isNightModeOn: Boolean){
         if(isNightModeOn)
         {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -44,23 +55,10 @@ class MainActivity : AppCompatActivity(){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             binding.imgBtnChangeMode.setImageResource(R.drawable.ic_moon)
         }
-
-        binding.imgBtnChangeMode.setOnClickListener {
-            if(isNightModeOn)
-            {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                binding.imgBtnChangeMode.setImageResource(R.drawable.ic_moon)
-                sharedPrefsEdit.putBoolean("NightMode", false)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                binding.imgBtnChangeMode.setImageResource(R.drawable.ic_sun)
-                sharedPrefsEdit.putBoolean("NightMode", true)
-            }
-            sharedPrefsEdit.apply()
-        }
     }
 
     private fun insertListener() {
+
         binding.fabCreateTask.setOnClickListener{
             val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
